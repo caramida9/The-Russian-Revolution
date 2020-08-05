@@ -1,0 +1,693 @@
+scenario
+{
+
+labels {
+lenin_type="The Comrade",
+
+}
+
+lenin_id=find_unit(3, "The Comrade");
+set_object_type_max_health("The Comrade", 190);
+set_object_type_max_health("The Monarch", 190);
+set_time_limit(60);
+timelimit=get_time_limit();
+
+
+run_once {
+//Disable types and techs
+disable_type("Pyramids");
+disable_type("Red Fort");
+disable_type("Colossus");
+disable_type("Hanging Gardens");
+disable_type("Terra Cotta Army");
+disable_type("Colosseum");
+disable_type("Forbidden City");
+disable_type("Temple of Tikal");
+disable_type("Porcelain Tower");
+disable_type("Angkor Wat");
+disable_type("Versailles");
+disable_type("Statue of Liberty");
+disable_type("Kremlin");
+disable_type("Taj Mahal");
+disable_type("Eiffel Tower");
+disable_type("Supercollider");
+disable_type("Space Program");
+disable_type("Small City");
+disable_type("General");
+disable_type("The Despot");
+disable_type("The Senator");
+disable_tech(1, "Republic");
+disable_tech(1, "Democracy");
+disable_tech(1, "Capitalism");
+disable_tech(1, "Socialism");
+disable_tech(1, "Despotism");
+disable_tech(1, "Monarchy");
+disable_tech(2, "Republic");
+disable_tech(2, "Democracy");
+disable_tech(2, "Capitalism");
+disable_tech(2, "Socialism");
+disable_tech(2, "Despotism");
+disable_tech(2, "Monarchy");
+disable_tech(3, "Republic");
+disable_tech(3, "Democracy");
+disable_tech(3, "Capitalism");
+disable_tech(3, "Socialism");
+disable_tech(3, "Despotism");
+disable_tech(3, "Monarchy");
+set_nation_name("Mongols", "Ukrainian Nationalists");
+set_nation_name("French", "Russian communists");
+set_nation_name("Greeks", "Polish Nationalists");
+set_nation_name("Spanish", "Finnish Nationalists");
+
+//Triggers
+disable_all_triggers();
+enable_trigger("Intro");
+enable_trigger("Start");
+enable_trigger("StrikesinPetrograd");
+enable_trigger("Timetochange");
+enable_trigger("Leninsarrival1");
+enable_trigger("Leninsarrival2");
+enable_trigger("Julystrikes");
+enable_trigger("Germanrevolution");
+enable_trigger("illeagalsoviets");
+enable_trigger("monarch");
+enable_trigger("October1");
+enable_trigger("October2");
+enable_trigger("germandefeat1");
+enable_trigger("germandefeat2");
+enable_trigger("Ekaterimburg");
+enable_trigger("truce");
+enable_trigger("newcity");
+enable_trigger("ukrevolt");
+enable_trigger("peacetreaty");
+enable_trigger("ukindependence");
+enable_trigger("intervention1");
+enable_trigger("polrevolt");
+enable_trigger("polindependece");
+enable_trigger("waragain");
+enable_trigger("intervention2");
+enable_trigger("czechlegion");
+enable_trigger("finnrevolt");
+enable_trigger("finindependence");
+enable_trigger("victory1");
+enable_trigger("victory2");
+enable_trigger("victory3");
+enable_trigger("victory4");
+enable_trigger("victory5");
+enable_trigger("victory6");
+enable_trigger("victory7");
+enable_trigger("victory8");
+//End of run once
+
+}
+trigger Intro (){
+begin=popup_choice("The Russian Revolution is the collective term for a series of revolutions in Russia in 1917, which destroyed the Tsarist autocracy and led to the creation of the Soviet Union. The Tsar was deposed and replaced by a provisional government in the first revolution of February 1917 (March in the Gregorian calendar; the older Julian calendar was in use in Russia at the time). In the second revolution, during October, the Provisional Government was removed and replaced with a Bolshevik (Communist) government","Close","More Info");
+if (begin==1){
+}
+else {
+popup_dialog("The February Revolution (March 1917) was a revolution focused around Petrograd (now St. Petersburg). In the chaos, members of the Imperial parliament or Duma assumed control of the country, forming the Russian Provisional Government. The army leadership felt they did not have the means to suppress the revolution and Tsar Nicholas II of Russia, the last Tsar of Russia, abdicated. The Soviets (workers' councils), which were led by more radical socialist factions, initially permitted the Provisional Government to rule, but insisted on a prerogative to influence the government and control various militias. The February Revolution took place in the context of heavy military setbacks during the First World War, which left much of the army in a state of mutiny.A period of dual power ensued, during which the Provisional Government held state power while the national network of Soviets, led by socialists, had the allegiance of the lower-class citizens and the political left. During this chaotic period there were frequent mutinies and many strikes. When the Provisional Government chose to continue fighting the war with Germany, the Bolsheviks and other socialist factions campaigned for the abandonment of the war effort. The Bolsheviks formed workers militias under their control into the Red Guards (later the Red Army) over which they exerted substantial control.In the October Revolution (November in the Gregorian calendar), the Bolshevik party, led by Vladimir Lenin, and the workers' Soviets, overthrew the Provisional Government in St Petersburg. The Bolsheviks appointed themselves as leaders of various government ministries and seized control of the countryside, establishing the Cheka to quash dissent. To end the war, the Bolshevik leadership signed the Treaty of Brest-Litovsk with Germany in March 1918.Civil war erupted between the Red (Bolshevik), and White (anti-Bolshevik) factions, which was to continue for several years, with the Bolsheviks ultimately victorious. In this way the Revolution paved the way for the Union of Soviet Socialist Republics (USSR). While many notable historical events occurred in Moscow and St Petersburg, there was also a broad-based movement in cities throughout the state, among national minorities throughout the empire, and in the rural areas, where peasants took over and redistributed land.");
+}
+
+}
+trigger Start (){
+popup_dialog("September 1916, The war between the German Empire and the Tsarist Russia is still raging.But our situation is getting worser.After several defeats our population is worried, the bad sistem doesn't provide enough goods for out people and the german spies are making socialist propaganda which afects out national unity even more.");
+set_timer("Strikes", 420);
+set_timer("G", 1900);
+disable_take_attrition(3);
+disable_city_defeat(3);
+diplomacy_set_reject(1);
+diplomacy_set_reject(2);
+diplomacy_set_reject(3);
+diplomacy_set_reject(4);
+diplomacy_set_reject(5);
+ctw_add_objective_text("Defeat the german army",1, "barrack.wav");
+set_defeat_message("You have been humiliated!");
+move_camera(155,149);
+popup_dialog("This is the front.The germans just managed to capture Warsaw and now they are going towards Minsk and Kiev, so you will have to protect them.Our army is a little bit weaker than the german one but if you could exploit all of Russia natural resources then you will easy overwelm them.");
+
+//PART I
+
+}
+trigger StrikesinPetrograd (timer_expired("Strikes")) {
+popup_dialog("The workers in Petrograd got on a strike to protest against the lack of food.But the german spies have infiltrated among the demonstrants and now the protest has transformed into a hostility against the crown.Our industry has been havily affected.Our militia will try to put the protestants down.");
+set_base_rate(2, "Food", get_base_rate(2, "Food")-80);
+set_base_rate(2, "Timber", get_base_rate(2, "Timber")-60);
+set_base_rate(2, "Metal", get_base_rate(2, "Metal")-40);
+set_base_rate(2, "Wealth", get_base_rate(2, "Wealth")-50);
+set_base_rate(2, "Oil", get_base_rate(2, "Oil")-50);
+disable_type_by_tribe("Citizen", "Russians");
+set_timer("Change", 40);
+
+}
+trigger Timetochange (timer_expired("Change")) {
+change=popup_choice("Our militia failed to put down the demonstrants and now the workers in all major cities are protesting against the monarchy.Also the soldiers heard about the protests and now they are preparing to desert from the army in a sign of protest.Everyone wants a reform.Do you want to change to democracy?", "Yes,change to democracy", "No,remain to monarchy");
+
+if (change==1){
+popup_dialog("Thanks to your wisdom now we have changed to democracy.Our tsar has abdicated and a new provision governement has been formed to rule the new republic.A new era awaits");
+make_peace(2, 3);
+diplomacy_block_war(2, 3);
+diplomacy_block_war(3, 2);
+set_base_rate(2, "Food", get_base_rate(2, "Food")+60);
+set_base_rate(2, "Timber", get_base_rate(2, "Timber")+60);
+set_base_rate(2, "Metal", get_base_rate(2, "Metal")+40);
+set_base_rate(2, "Wealth", get_base_rate(2, "Wealth")+40);
+set_base_rate(2, "Oil", get_base_rate(2, "Oil")+50);
+enable_type_by_tribe("Citizen", "Russians");
+set_timer("Lenins arrival1", 120);
+set_leader_name(2, "Provision Gouvernement");
+create_unit(2 , 130, 89, "The President", 1);
+unit_move_order(2, 109, 205, 24);
+unit_ignore_orders(2, 109);
+set_victory_message("The power of democracy has won!");
+chat(2, 1, "Oh, so you have changed to democracy.We can't wait to note another failure of this type of gouvernment.");
+
+
+}
+else {
+popup_dialog("You have decided to remain to monarchy.Our soldiers won't fight for our motherland any more.");
+set_timer("Lenins arrival2", 160);
+disable_type_by_tribe("Riflemen", "Russians");
+disable_type_by_tribe("Anti-tank Rifle", "Russians");
+disable_type_by_tribe("Machine Gun", "Russians");
+set_victory_message("The monarchy has prevailed!");
+chat(2, 1, "Looks like the army won't folow you anymore.What a shame!");
+}
+//PART II
+
+}
+
+trigger Ekaterimburg (object_near(2, 109, 205, 24, 5)) {
+popup_dialog("Our monarch has settled in the royal palace at Ekaterimburg.We won't have to worry for him anymore.");
+disable_trigger("monarch");
+disable_type_by_tribe("The Despot", "Russians");
+disable_type_by_tribe("The Senator", "Russians");
+kill_unit_anim(2, 109, 1);
+}
+
+trigger Leninsarrival1 (timer_expired("Lenins arrival1")) {
+move_camera(80, 59);
+popup_dialog("Lenin the great bolshevic leader has arrived at Petrograd right from Switzerland.The bolshevics will now start to gain power.We should watch them carefully.");
+create_unit(3, 80, 59, "The Comrade", 1);
+create_unit(3, 80, 59, "Anti-tank Rifle", 4);
+create_unit(3, 81, 59, "Riflemen", 5);
+create_unit(3, 80, 60, "Machine Gun", 4);
+create_unit(3, 86, 49, "Armored Car", 2);
+create_unit(3, 87, 49, "Light Tank", 1);
+create_unit(3, 86, 50, "Artillery", 2);
+create_unit(3, 88, 50, "Flamethrower", 2);
+create_unit(3, 87, 50, "Supply Wagon", 1);
+create_unit(3, 79, 59, "Commando", 1);
+chat(2, 1, "This guy Lenin wanted to visit his motherland Russia, so we said that we shouldn't dissapoint him.");
+set_timer("July strikes", 300);
+rename_type("The Comrade", "Vladimir Lenin");
+}
+
+trigger Leninsarrival2 (timer_expired("Lenins arrival2")) {
+move_camera(80, 59);
+enable_type_by_tribe("Riflemen", "Russians");
+popup_dialog("Lenin the great bloshevic leader has arrived at Petrograd and he wants to take control of that city and of whole Russia.We must stop him.");
+create_unit(3, 80, 59, "The Comrade", 1);
+create_unit(3, 80, 59, "Anti-tank Rifle", 4);
+create_unit(3, 81, 59, "Riflemen", 6);
+create_unit(3, 80, 60, "Machine Gun", 4);
+create_unit(3, 86, 49, "Armored Car", 2);
+create_unit(3, 87, 49, "Light Tank", 1);
+create_unit(3, 86, 50, "Artillery", 1);
+create_unit(3, 87, 50, "Supply Wagon", 1);
+create_unit(3, 79, 50, "Commando", 1);
+create_unit(3, 88, 50, "Flamethrower", 3);
+create_unit(3, 48, 59, "Minuteman", 8);
+create_unit(3, 122, 42, "Armored Car", 2);
+create_unit(3, 123, 42, "Riflemen", 4);
+create_unit(3, 121, 41, "Machine Gun", 2);
+rename_type("The Comrade", "Vladimir Lenin");
+chat(2, 1, "Good luck with that guy, Lenin.");
+enable_trigger("leninsdead");
+set_timer("Ukraine", 240);
+set_timer("Finland", 260);
+set_timer("Armitice", 300);
+ctw_add_objective("Defeat both the germans and the communists", 2, "barrack.wav");
+}
+
+trigger Julystrikes (timer_expired("July strikes")){
+popup_dialog("July 1917.The Bolshevics have gathered in Petrograd and they have initiated a great protest, 'calling down the war'.Our production have been affected again.It might be the time to take a decision.");
+set_timer("Soviets", 30);
+set_base_rate(2, "Food", get_base_rate(2, "Food")-80);
+set_base_rate(2, "Timber", get_base_rate(2, "Timber")-60);
+set_base_rate(2, "Metal", get_base_rate(2, "Metal")-40);
+set_base_rate(2, "Wealth", get_base_rate(2, "Wealth")-50);
+set_base_rate(2, "Oil", get_base_rate(2, "Oil")-50);
+create_unit(3, 82, 61, "Minuteman", 5);
+create_unit(3, 83, 61, "Commando", 2);
+create_unit(3, 83, 62, "Riflemen", 3);
+
+}
+trigger Germanrevolution (unit_killed(1, 3)){
+popup_dialog("We've managed to kill the german monarch.The workers gone on a major strike and the enemy production have been affected.");
+set_base_rate(1, "Food", get_base_rate(1, "Food")-90);
+set_base_rate(1, "Timber", get_base_rate(1, "Timber")-60);
+set_base_rate(1, "Metal", get_base_rate(1, "Metal")-40);
+set_base_rate(1, "Wealth", get_base_rate(1, "Wealth")-60);
+set_base_rate(1, "Oil", get_base_rate(1, "Oil")-50);
+disable_type_by_tribe("Riflemen", "Germans");
+disable_type_by_tribe("Anti-tank Rifle", "Germans");
+disable_type_by_tribe("Machine Gun", "Germans");
+disable_type_by_tribe("Citizen", "Germans");
+disable_type_by_tribe("Germans", "The Despot");
+disable_type_by_tribe("Germans", "The Senator");
+create_unit(1, 155, 220, "The President", 1); 
+set_leader_name(1, "Weimar Republic");
+set_timer("Newenemy", 140);
+enable_trigger("Newgermans");
+
+}
+
+if (time()>=timelimit){
+set_defeat_message("The situation remained inconclusive.");
+defeat(2);
+
+}
+
+
+//PART III
+
+trigger illeagalsoviets (timer_expired("Soviets")){
+create_unit(3, 89, 50, "Machine Gun", 5);
+create_unit(3, 88, 50, "Armored Car", 2);
+create_unit(3, 85, 51, "Minuteman", 5);
+move_camera(80,60);
+soviets=popup_choice("The protest has been bigger than we expected and the communists gain a lot of popularity.The situation is very tensed up.We could try to do something.We could try to make the soviets illeagal so the communists will not be able to organise any more.This will be equal with declaring war on the bolshevics but the protest will be stoped.Do you want to make the soviets illeagal?", "Yes, make soviets illeagal", "No, let them leagal");
+if (soviets==0){
+popup_dialog("You have decided to let the soviets leagal.The bolshevics will continue their protest and they will gain more and more popularity.");
+set_timer("October revolution1", 300);
+enable_trigger("badtroops");
+set_timer("Bad troops", 60);
+}
+else {
+popup_dialog("You have decided to make the soviets illeagal.This is a decisive blow to the bolshevics organisation.Still you will now have to respond to the armed communists.Lenin will flee from the battlefield.Catch him if you can.");
+declare_war(3, 2);
+unit_move_order(3, lenin_id, 4, 21);
+unit_ignore_orders(3, lenin_id);
+set_base_rate(2, "Food", get_base_rate(2, "Food")+60);
+set_base_rate(2, "Timber", get_base_rate(2, "Timber")+50);
+set_base_rate(2, "Metal", get_base_rate(2, "Metal")+30);
+set_base_rate(2, "Wealth", get_base_rate(2, "Wealth")+40);
+set_base_rate(2, "Oil", get_base_rate(2, "Oil")+40);
+ctw_add_objective("Defeat the germans and the communists", 3, "barrack.wav");
+enable_trigger("Leninescaped");
+enable_trigger("leninsdead");
+
+}
+
+}
+
+trigger Leninescaped (object_near(3, lenin_id, 4, 21, 5)){
+popup_dialog("Lenin managed to escape in the northen forests of Russia.He will now organise an revolution against your gouvernement.");
+disable_trigger("leninsdead");
+kill_unit_anim(3, lenin_id, 1);
+disable_type_by_tribe("French", "The Despot");
+disable_type_by_tribe("French", "The Senator");
+set_timer("October revolution2", 300);
+
+}
+trigger monarch (unit_killed(2, 109)){
+popup_dialog("Our great tsar has been killed our units wont fight so good now.");
+disable_type_by_tribe("Russians", "The Despot");
+disable_type_by_tribe("Russians", "The Senator");
+disable_type_by_tribe("Riflemen", "Russians");
+disable_type_by_tribe("Anti-tank Rifle", "Russians");
+disable_type_by_tribe("Machine Gun", "Russians");
+enable_trigger("Better");
+set_timer("better", 120);
+
+}
+trigger newgermans (timer_expired("Newenemy")){
+popup_dialog("The german army has been reorganised and now they will fight better");
+set_base_rate(1, "Food", get_base_rate(1, "Food")+60);
+set_base_rate(1, "Timber", get_base_rate(1, "Timber")+50);
+set_base_rate(1, "Metal", get_base_rate(1, "Metal")+30);
+set_base_rate(1, "Wealth", get_base_rate(1, "Wealth")+40);
+set_base_rate(1, "Oil", get_base_rate(1, "Oil")+40);
+enable_type_by_tribe("Riflemen", "Germans");
+enable_type_by_tribe("Anti-tank Rifle", "Germans");
+enable_type_by_tribe("Machine Gun", "Germans");
+enable_type_by_tribe("Citizen", "Germans");
+
+}
+trigger Better (timer_expired("better")){
+popup_dialog("Our units have forgoten about our monarch's tragedy and now they are up and running again");
+enable_type_by_tribe("Riflemen", "Russians");
+enable_type_by_tribe("Anti-tank Rifle", "Russians");
+enable_type_by_tribe("Machine Gun", "Russians");
+
+}
+
+trigger badtroops(timer_expired("Bad troops")){
+popup_dialog("Our loyal troops have been affected by the communists propaganda and now they are wishing for the war to end, so they are no longer fighting well.");
+disable_type_by_tribe("Riflemen", "Russians");
+disable_type_by_tribe("Anti-tank", "Russians");
+disable_type_by_tribe("Machine Gun", "Russians");
+
+}
+
+trigger germandefeat1 (timer_expired("G")){
+popup_dialog("After a long war in the west the Entente managed to force Germany to capitulate.Now we won't have to worry about the german army.Also the anglo-americans could send us some help to fight the communists.");
+make_peace(2, 1);
+make_peace(4, 1);
+make_peace(5, 1);
+defeat(1);
+set_timer("2 expedition", 150);
+
+}
+
+trigger germandefeat2 (city_captured_by(1, 2, "Berlin")){
+popup_dialog("After a long a hard war our great army managed to capture Berlin.The german army is destroyed and all the german people want is peace.Also the anglo-americans could send us some help to fight the communists.");
+make_peace(2, 1);
+make_peace(4, 1);
+make_peace(5, 1);
+defeat(1);
+set_timer("2 expedition", 180);
+
+}
+  
+ 
+//October revolution(part IV)
+
+
+trigger October1 (timer_expired("October revolution1")) {
+move_camera(80, 59);
+popup_dialog("The bolshevics have turned against us and have organised an armed revolution against us.Our capital is in danger.Protect it if youcan.");
+create_unit(3, 81, 60, "Armored Car", 4);
+create_unit(3, 79, 59, "Riflemen", 8);
+create_unit(3, 78, 60, "Minuteman", 10);
+create_unit(3, 87, 49, "Anti-tank Rifle", 4);
+create_unit(3, 85, 50, "Machine Gun", 5);
+create_unit(3, 86, 49, "Light Tank", 3);
+create_unit(3, 88, 51, "Artillery", 2);
+diplomacy_enable_war(2 ,3);
+diplomacy_enable_war(3, 2);
+enable_type_by_tribe("Riflemen", "Russians");
+declare_war(3, 2);
+set_timer("Armitice", 75);
+set_timer("1 expedition", 240);
+set_timer("Finland", 40);
+enable_trigger("leninsdead");
+set_timer("Moscow", 35);
+}
+
+trigger October2 (timer_expired("October revolution2")){
+move_camera(80, 59);
+popup_dialog("Lenin has returned to Petrograd and has organised an armed revolution against our government.Our capital is in danger.Save it if you can.");
+create_unit(3, 81, 60, "The Comrade", 1);
+create_unit(3, 79, 59, "Riflemen", 7);
+create_unit(3, 78, 60, "Minuteman", 10);
+create_unit(3, 87, 49, "Anti-tank Rifle", 4);
+create_unit(3, 85 , 50, "Machine Gun", 5);
+create_unit(3, 86, 49, "Armored Car", 4);
+create_unit(3, 87, 50, "Light Tank", 3);
+create_unit(3, 88, 51, "Artillery", 2);
+create_unit(3, 48, 59, "Artillery", 2);
+create_unit(3, 47, 60, "Minuteman", 10);
+set_timer("Armitice", 75);
+set_timer("Moscow", 35);
+set_timer("Finland", 40);
+set_timer("1 expedition", 240);
+enable_trigger("leninsdead");
+}
+
+trigger truce (timer_expired("Armitice")) {
+ceasefire=popup_choice("Our situation is at the limit.The war with the germans and the communists strech us on two fronts.Our industry has been crippled by the continuing strikes and by the bolshevics raids.Our people wants like the war to end and our troops are exausthed.We should admit defeat and give an armistice to the germans.They would ask for a big tribute but that's all we got left.Do you want to give a truce?", "Yes, offer a truce", "No, stay at war");
+if (ceasefire==0){
+popup_dialog("You have decided to remain at war.Let's hope that is a good choise.");
+set_timer("Ukraine", 60);
+}
+
+else {
+popup_dialog("You have decided to give a truce.Now we can focus on the revolutionary army, while our diplomats will negotiate with the germans.");
+make_peace(2, 1);
+diplomacy_block_war(1, 2);
+diplomacy_block_war(2, 1);
+set_timer("Brest-Litovsk", 120);
+set_timer("Ukraine", 60);
+
+}
+
+}
+trigger newcity (timer_expired("Moscow")){
+popup_dialog("Lenin has organised another revolution at Moscow.You must defend that important city.");
+create_unit(3, 122, 41, "Riflemen", 5);
+create_unit(3, 121, 42, "Minuteman", 8);
+create_unit(3, 123, 43, "Machine Gun", 4);
+create_unit(3, 122, 42, "Armored Car", 2);
+create_unit(3, 124, 41, "Artillery", 2);
+create_unit(3, 124, 43, "Light Tank", 2);
+
+}
+trigger ukrevolt (timer_expired("Ukraine")){
+popup_dialog("In this hard times when the german army are advancing from west and the communists from east, the ukrainian people have decided to gain their independence.They have made an uprising near Kiev and will fight hard to regain their lost independence.Fight them of if you can.");
+create_unit(4, 186, 121, "Riflemen", 6);
+create_unit(4, 185, 121, "Minuteman", 9);
+create_unit(4, 185, 122, "Machine Gun", 4);
+create_unit(4, 187, 122, "Anti-tank Rifle", 4);
+create_unit(4, 187, 120, "Armored Car", 3);
+create_unit(4, 176, 138, "Light Tank", 2);
+create_unit(4, 175, 137, "Artillery", 4);
+create_unit(4, 177, 139, "Supply Wagon", 1);
+create_unit(4, 177, 139, "Riflemen", 6);
+
+}
+trigger peacetreaty(timer_expired("Brest-Litovsk")){
+peace=popup_choice("After a long negotiation, the germans gave us this offer.In order to make peace with them we will have to pay a huge tribute witch will be:1500 food;1000 timber; 1000 oil; and 2000 wealth;Unfortunely our diplomats couldn't convince the germans to make an easier peace.Do you accept to pay the tribute to make peace?", "Yes, accept it", "No, refuse it");
+
+if (peace==0){
+popup_dialog("Because you have refused the germans generous peace offer they have now declared war on you.They wont give you the posibility to negotiate with them.");
+declare_war(1, 2);
+set_timer("Poland", 200);
+}
+
+else {
+popup_dialog("We are now at peace with Germany.The war is over.Now we can concentrate only on the internal problems.Unfortunely the bolshevics also made peace with the germans.Destroy those communists");
+give_good(1, "Food", 1500);
+give_good(1, "Oil", 1000);
+give_good(1, "Timber", 1000);
+give_good(1, "Wealth", 2000);
+take_good(2, "Food", 1500);
+take_good(2, "Oil", 1000);
+take_good(2, "Wealth", 2000);
+take_good(2, "Timber", 1000);
+diplomacy_block_war(1, 2);
+make_peace(1, 3);
+set_timer("Poland", 180);
+set_timer("Back at war", 190);
+ctw_add_objective("Defeat the communists", 4, "barrack.wav");
+}
+
+}
+
+//Part V
+
+trigger ukindependence ((city_assimilated_by(2, 4, "Kiev"))||(city_assimilated_by(1, 4, "Kiev"))){
+disable_trigger("ukrevolt");
+ukpeace=popup_choice("After a strong uprising the ukrainians managed to capture  Kiev.Still the ukrainians don't like the communists too much so they are willing to make an aliance with you against the communists if you recognise their independence and give them a small tribute in a signed of friendship","Yes, ally with them.", "No, they don't deserve it.");
+if (ukpeace==0){
+popup_dialog("You have decided to remain at war with the ukrainians.Now we have another thing to worry about.");
+
+}
+else {
+popup_dialog("Thanks to your diplomatic skills we are now allied with the ukrainians let's hope that this will help us.");
+make_alliance(4, 2);
+give_good(4, "Wealth", 500);
+take_good(2, "Wealth", 500);
+
+}
+
+}
+
+trigger intervention2 (timer_expired("2 expedition")){
+popup_dialog("Now, after ending the war with Germany the Entente has decided to sent us some resources and troops to fight off the bolshevics.They have desembarque near Odessa, and they are ready to join us.");
+create_unit(2, 187, 146, "Marine Riflemen", 5);
+create_unit(2, 186, 145, "Machine Gun", 3);
+create_unit(2, 188, 146, "Anti-tank Rifle", 3);
+create_unit(2, 179, 151, "Light Tank", 2);
+create_unit(2, 180, 150, "Armored Car", 2);
+give_good(2, "Metal", 2000);
+give_good(2, "Food", 1000);
+give_good(2, "Wealth", 1000);
+}
+
+trigger polrevolt (timer_expired("Poland")){
+popup_dialog("In this hard times when the germans are exploatating all the resources and the communists advances from east, the polish people have decided to gain their independence.They have made an uprising near Warsaw and will fight hard to regain their lost independence.");
+create_unit(5, 151, 175, "Riflemen", 8);
+create_unit(5, 152, 176, "Anti-tank Rifle", 5);
+create_unit(5, 150, 175, "Machine Gun", 5);
+create_unit(5, 150, 174, "Minuteman", 13);
+create_unit(5, 142, 165, "Armored Car", 5);
+create_unit(5, 141, 165, "Light Tank", 3);
+create_unit(5, 143, 166, "Artillery", 4);
+create_unit(5, 142, 164, "Riflemen", 10);
+}
+
+
+trigger polindependece ((city_assimilated_by(2, 5, "Warsaw"))||(city_assimilated_by(1, 5, "Warsaw"))){
+disable_trigger("polrevolt");
+polpeace=popup_choice("After a strong uprising the polish people managed to capture  Warsaw.Still the polish people don't like the communists too much so they are willing to make an aliance with you against the communists if you recognise their independence and give them a small tribute in a signed of friendship","Yes, ally with them.", "No, they don't deserve it.");
+if (polpeace==0){
+popup_dialog("You have decided to remain at war with the polish nationalists.Now we have another thing to worry about.");
+
+}
+else {
+popup_dialog("Thanks to your diplomatic skills we are now allied with the polish people.Let's hope that this will help us.");
+make_alliance(5, 2);
+give_good(5, "Wealth", 500);
+take_good(2, "Wealth", 500);
+
+}
+
+}
+
+trigger waragain (timer_expired("Back at war")){
+popup_dialog("With Germany's situation getting worser and worser it no longer matters if we have a peace treaty with them or not.We could take a small advantage here.So all the treaties have been broked.");
+declare_war(2, 1);
+
+}
+
+trigger intervention1(timer_expired("1 expedition")){
+popup_dialog("The Entente has decided that it's time to send you some help to fight the communists.An important expeditionary force has disembarque at Archangelsk, and now they are ready to help you."); 
+create_unit(2, 38, 15, "Marine Riflemen", 7);
+create_unit(2, 38, 17, "Anti-tank Rifle", 4);
+create_unit(2, 36, 15, "Machine Gun", 4);
+create_unit(2, 36, 13, "Armored Car", 3);
+create_unit(2, 39, 13, "Light Tank", 3);
+create_unit(2, 37, 18, "Marine Riflemen", 3);
+set_timer("czechoslovak", 120);
+
+}
+
+
+trigger czechlegion ((timer_expired("czechoslovak"))&&((is_defeated(3))==false)){
+czech=popup_choice("While we fight the communists in Europe, on the eastern side of the Urals the communists are also attemting to gain control over the vast Russian teritories.The anglo-americans have already disembaque at Vladivostok so they can face the communists in the Far Eastern Russia.But also the Czechoslovak Legion formed of former czechoslovaks POW are now trying to force their way to Vladivostok.If we help them with some resources then the communists will have to keep themselves concentrate on the eastern front.But the help must be consistent.It will require :2000 food; 1500 timber; and 2000 oil.Do you want to help the Czechoslovak Legion?","Send them all help possible","Send them 500 food","Don't help them");
+if (czech==0){
+popup_dialog("You have sent them a lot of resources and now the communists will have to concentrate more on them.So they wont sent any forces back in Europe.");
+take_good(2, "Food", 2000);
+take_good(2, "Timber", 1500);
+take_good(2, "Oil", 2000);
+}
+
+else if (czech==1){
+popup_dialog("Unfortunaly the communist managed to capture that small aid you sent and now they have sent some forces to the European theatre.");
+give_good(3, "Food", 500);
+take_good(2, "Food", 500);
+set_timer("more enemies1", 90);
+enable_trigger("morecomrades1");
+}
+
+else {
+popup_dialog("You didn't send them any help to the Czechoslovak Legion and now the communists are more relieved of that front.So they have dispatched some forces and sent them to the European thatre.:");
+set_timer("more enemies2", 90);
+enable_trigger("morecomrades2");
+}
+
+}
+
+trigger leninsdead ((num_type(3, lenin_type))<1){
+popup_dialog("You managed to kill Lenin the great bolshevic leader.Now all we have to do is to regain our lost cities and the communists will be defeated.");
+enable_city_defeat(3);
+set_timer("Ukraine", 120);
+set_timer("Poland", 130);
+set_timer("Finland", 140);
+}
+
+trigger morecomrades1 (timer_expired("more enemies1")){
+popup_dialog("More communists forces have arrived from the far east.");
+create_unit(3, 87, 22, "Riflemen", 5);
+create_unit(3, 88, 22, "Minuteman", 10);
+create_unit(3, 86, 23, "Machine Gun", 4);
+create_unit(3, 88, 21, "Anti-tank Rifle", 4);
+create_unit(3, 89, 22, "Armored Car", 2);
+create_unit(3, 89, 24, "Light Tank", 2);
+
+}
+trigger morecomrades2 (timer_expired("more enemies2")){
+popup_dialog("More communists forces have arrived from the far east.");
+create_unit(3, 87, 22, "Riflemen", 3);
+create_unit(3, 88, 22, "Minuteman", 7);
+create_unit(3, 86, 23, "Machine Gun", 3);
+create_unit(3, 88, 21, "Anti-tank Rifle", 3);
+create_unit(3, 89, 22, "Armored Car", 2);
+create_unit(3, 89, 24, "Light Tank", 1);
+
+}
+
+trigger finnrevolt (timer_expired("Finland")){
+popup_dialog("With the situation now unstable the finns to see the reason to remain under your empire so they have declared their independence and they have organised an uprising near Helsinki");
+create_unit(6, 26, 103, "Riflemen", 6);
+create_unit(6, 27, 103, "Minuteman", 9);
+create_unit(6, 25, 102, "Machine Gun", 4);
+create_unit(6, 26, 104, "Anti-tank Rifle", 4);
+create_unit(6, 27, 102, "Armored Car", 3);
+create_unit(6, 39, 88, "Light Tank", 2);
+create_unit(6, 40, 87, "Artillery", 4);
+create_unit(6, 38, 89, "Supply Wagon", 1);
+create_unit(6, 41, 90, "Riflemen", 6);
+
+}
+
+trigger finindependence ((city_assimilated_by(2, 6, "Helsinki"))||(city_assimilated_by(1, 5, "Helsinki"))) {
+polpeace=popup_choice("After a strong uprising the finns managed to capture  Helsinki.Still the finns don't like the communists too much so they are willing to make an aliance with you against the communists if you recognise their independence and give them a small tribute in a signed of friendship","Yes, ally with them.", "No, they don't deserve it.");
+if (polpeace==0){
+popup_dialog("You have decided to remain at war with the finnish nationalists.Now we have another thing to worry about.");
+
+}
+else {
+popup_dialog("Thanks to your diplomatic skills we are now allied with the finns.Let's hope that this will help us.");
+make_alliance(6, 2);
+give_good(6, "Wealth", 500);
+take_good(2, "Wealth", 500);
+
+}
+
+}
+
+
+//Victory conditions
+
+trigger victory1 ((is_defeated(1))&&(is_defeated(3))&&(is_defeated(4))&&(is_defeated(5))&&(is_defeated(6))){
+victory(2);
+}
+
+trigger victory2 ((is_defeated(1))&&(is_defeated(3))&&(have_alliance(2, 4))&&(have_alliance(2, 5))&&(have_alliance(2, 6))){
+victory(2);
+
+}
+
+trigger victory3 ((is_defeated(1))&&(is_defeated(3))&&(have_alliance(2, 4))&&(is_defeated(5))&&(have_alliance(2, 6))){
+victory(2);
+
+}
+
+trigger victory4 ((is_defeated(1))&&(is_defeated(3))&&(is_defeated(4))&&(have_alliance(2, 5))&&(have_alliance(2, 6))){
+victory(2);
+ 
+}
+trigger victory5 ((is_defeated(1))&&(is_defeated(3))&&(is_defeated(4))&&(have_alliance(2, 5))&&(is_defeated(6))){
+victory(2);
+
+}
+trigger victory6 ((is_defeated(1))&&(is_defeated(3))&&(have_alliance(2, 4))&&(have_alliance(2, 5))&&(is_defeated(6))){
+victory(2);
+
+}
+trigger victory7 ((is_defeated(1))&&(is_defeated(3))&&(have_alliance(2, 4))&&(is_defeated(5))&&(is_defeated(6))){
+victory(2);
+
+}
+trigger victory8 ((is_defeated(1))&&(is_defeated(3))&&(is_defeated(4))&&(is_defeated(5))&&(have_alliance(2, 6))){
+victory(2);
+
+}
+
+}
+
+
+
+
